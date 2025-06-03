@@ -32,10 +32,16 @@ const AdminSidebar = ({ isOpen, onToggle }: AdminSidebarProps) => {
   ];
 
   return (
-    <div className={`fixed left-0 top-0 h-full bg-white border-r border-gray-200 transition-all duration-300 z-30 ${isOpen ? 'w-64' : 'w-16'}`}>
+    <div className={`
+      fixed left-0 top-0 h-full bg-white border-r border-gray-200 transition-all duration-300 z-30
+      ${isOpen ? 'translate-x-0' : '-translate-x-full md:translate-x-0'}
+      ${isOpen ? 'w-64' : 'w-64 md:w-16'}
+    `}>
       <div className="flex items-center justify-between p-4 border-b border-gray-200">
-        {isOpen && (
-          <h1 className="text-xl font-bold text-gray-800">Admin Panel</h1>
+        {(isOpen || window.innerWidth >= 768) && (
+          <h1 className={`text-xl font-bold text-gray-800 ${!isOpen && 'md:hidden'}`}>
+            Admin Panel
+          </h1>
         )}
         <button
           onClick={onToggle}
@@ -61,7 +67,11 @@ const AdminSidebar = ({ isOpen, onToggle }: AdminSidebarProps) => {
                 }
               >
                 <item.icon className="w-5 h-5 flex-shrink-0" />
-                {isOpen && <span className="ml-3 font-medium">{item.label}</span>}
+                {(isOpen || window.innerWidth >= 768) && (
+                  <span className={`ml-3 font-medium ${!isOpen && 'md:hidden'}`}>
+                    {item.label}
+                  </span>
+                )}
               </NavLink>
             </li>
           ))}

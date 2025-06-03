@@ -9,7 +9,7 @@ interface AdminHeaderProps {
 
 const AdminHeader = ({ onMenuClick }: AdminHeaderProps) => {
   return (
-    <header className="bg-white border-b border-gray-200 px-6 py-4">
+    <header className="bg-white border-b border-gray-200 px-4 md:px-6 py-4">
       <div className="flex items-center justify-between">
         <div className="flex items-center space-x-4">
           <Button
@@ -39,7 +39,9 @@ const AdminHeader = ({ onMenuClick }: AdminHeaderProps) => {
               alt="Admin"
               className="w-8 h-8 rounded-full"
             />
-            <span className="text-sm font-medium text-gray-700">Admin</span>
+            <span className="text-sm font-medium text-gray-700 hidden sm:inline">
+              Admin
+            </span>
           </div>
         </div>
       </div>

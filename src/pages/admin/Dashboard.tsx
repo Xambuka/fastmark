@@ -21,15 +21,15 @@ const Dashboard = () => {
   };
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-4 md:space-y-6 max-w-full">
       {/* Header */}
-      <div>
-        <h1 className="text-2xl font-bold text-gray-900">Dashboard</h1>
-        <p className="text-gray-600">Visão geral e configurações do sistema</p>
+      <div className="px-1">
+        <h1 className="text-xl md:text-2xl font-bold text-gray-900">Dashboard</h1>
+        <p className="text-sm md:text-base text-gray-600">Visão geral e configurações do sistema</p>
       </div>
 
       {/* Stats Grid */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
         <StatsCard
           title="Total de Empresas"
           value={systemStats.totalCompanies}
@@ -61,113 +61,113 @@ const Dashboard = () => {
       </div>
 
       {/* Theme Settings */}
-      <Card>
+      <Card className="w-full">
         <CardHeader>
-          <CardTitle className="flex items-center space-x-2">
-            <Palette className="w-5 h-5" />
+          <CardTitle className="flex items-center space-x-2 text-lg md:text-xl">
+            <Palette className="w-4 h-4 md:w-5 md:h-5" />
             <span>Configurações Visuais</span>
           </CardTitle>
         </CardHeader>
-        <CardContent>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <CardContent className="p-4 md:p-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4 md:gap-6">
             <div className="space-y-2">
-              <Label htmlFor="primaryColor">Cor Primária</Label>
+              <Label htmlFor="primaryColor" className="text-sm font-medium">Cor Primária</Label>
               <div className="flex items-center space-x-2">
                 <Input
                   id="primaryColor"
                   type="color"
                   value={theme.primaryColor}
                   onChange={(e) => handleThemeChange('primaryColor', e.target.value)}
-                  className="w-16 h-10 p-1"
+                  className="w-12 h-10 p-1 flex-shrink-0"
                 />
                 <Input
                   type="text"
                   value={theme.primaryColor}
                   onChange={(e) => handleThemeChange('primaryColor', e.target.value)}
-                  className="flex-1"
+                  className="flex-1 text-sm"
                 />
               </div>
             </div>
 
             <div className="space-y-2">
-              <Label htmlFor="secondaryColor">Cor Secundária</Label>
+              <Label htmlFor="secondaryColor" className="text-sm font-medium">Cor Secundária</Label>
               <div className="flex items-center space-x-2">
                 <Input
                   id="secondaryColor"
                   type="color"
                   value={theme.secondaryColor}
                   onChange={(e) => handleThemeChange('secondaryColor', e.target.value)}
-                  className="w-16 h-10 p-1"
+                  className="w-12 h-10 p-1 flex-shrink-0"
                 />
                 <Input
                   type="text"
                   value={theme.secondaryColor}
                   onChange={(e) => handleThemeChange('secondaryColor', e.target.value)}
-                  className="flex-1"
+                  className="flex-1 text-sm"
                 />
               </div>
             </div>
 
             <div className="space-y-2">
-              <Label htmlFor="accentColor">Cor de Destaque</Label>
+              <Label htmlFor="accentColor" className="text-sm font-medium">Cor de Destaque</Label>
               <div className="flex items-center space-x-2">
                 <Input
                   id="accentColor"
                   type="color"
                   value={theme.accentColor}
                   onChange={(e) => handleThemeChange('accentColor', e.target.value)}
-                  className="w-16 h-10 p-1"
+                  className="w-12 h-10 p-1 flex-shrink-0"
                 />
                 <Input
                   type="text"
                   value={theme.accentColor}
                   onChange={(e) => handleThemeChange('accentColor', e.target.value)}
-                  className="flex-1"
+                  className="flex-1 text-sm"
                 />
               </div>
             </div>
 
             <div className="space-y-2">
-              <Label htmlFor="backgroundColor">Cor de Fundo</Label>
+              <Label htmlFor="backgroundColor" className="text-sm font-medium">Cor de Fundo</Label>
               <div className="flex items-center space-x-2">
                 <Input
                   id="backgroundColor"
                   type="color"
                   value={theme.backgroundColor}
                   onChange={(e) => handleThemeChange('backgroundColor', e.target.value)}
-                  className="w-16 h-10 p-1"
+                  className="w-12 h-10 p-1 flex-shrink-0"
                 />
                 <Input
                   type="text"
                   value={theme.backgroundColor}
                   onChange={(e) => handleThemeChange('backgroundColor', e.target.value)}
-                  className="flex-1"
+                  className="flex-1 text-sm"
                 />
               </div>
             </div>
 
             <div className="space-y-2">
-              <Label htmlFor="textColor">Cor do Texto</Label>
+              <Label htmlFor="textColor" className="text-sm font-medium">Cor do Texto</Label>
               <div className="flex items-center space-x-2">
                 <Input
                   id="textColor"
                   type="color"
                   value={theme.textColor}
                   onChange={(e) => handleThemeChange('textColor', e.target.value)}
-                  className="w-16 h-10 p-1"
+                  className="w-12 h-10 p-1 flex-shrink-0"
                 />
                 <Input
                   type="text"
                   value={theme.textColor}
                   onChange={(e) => handleThemeChange('textColor', e.target.value)}
-                  className="flex-1"
+                  className="flex-1 text-sm"
                 />
               </div>
             </div>
           </div>
 
           <div className="mt-6 flex justify-end">
-            <Button onClick={handleSaveTheme} className="flex items-center space-x-2">
+            <Button onClick={handleSaveTheme} className="flex items-center space-x-2 text-sm">
               <Save className="w-4 h-4" />
               <span>Salvar Configurações</span>
             </Button>
@@ -176,32 +176,32 @@ const Dashboard = () => {
       </Card>
 
       {/* Preview */}
-      <Card>
+      <Card className="w-full">
         <CardHeader>
-          <CardTitle>Preview das Cores</CardTitle>
+          <CardTitle className="text-lg md:text-xl">Preview das Cores</CardTitle>
         </CardHeader>
-        <CardContent>
-          <div className="grid grid-cols-5 gap-4">
+        <CardContent className="p-4 md:p-6">
+          <div className="grid grid-cols-2 md:grid-cols-5 gap-3 md:gap-4">
             <div 
-              className="h-20 rounded-lg flex items-center justify-center text-white font-medium"
+              className="h-16 md:h-20 rounded-lg flex items-center justify-center text-white font-medium text-xs md:text-sm"
               style={{ backgroundColor: theme.primaryColor }}
             >
               Primária
             </div>
             <div 
-              className="h-20 rounded-lg flex items-center justify-center text-white font-medium"
+              className="h-16 md:h-20 rounded-lg flex items-center justify-center text-white font-medium text-xs md:text-sm"
               style={{ backgroundColor: theme.secondaryColor }}
             >
               Secundária
             </div>
             <div 
-              className="h-20 rounded-lg flex items-center justify-center text-white font-medium"
+              className="h-16 md:h-20 rounded-lg flex items-center justify-center text-white font-medium text-xs md:text-sm"
               style={{ backgroundColor: theme.accentColor }}
             >
               Destaque
             </div>
             <div 
-              className="h-20 rounded-lg border-2 flex items-center justify-center font-medium"
+              className="h-16 md:h-20 rounded-lg border-2 flex items-center justify-center font-medium text-xs md:text-sm"
               style={{ 
                 backgroundColor: theme.backgroundColor,
                 color: theme.textColor,
@@ -211,7 +211,7 @@ const Dashboard = () => {
               Fundo
             </div>
             <div 
-              className="h-20 rounded-lg border flex items-center justify-center"
+              className="h-16 md:h-20 rounded-lg border flex items-center justify-center text-xs md:text-sm col-span-2 md:col-span-1"
               style={{ color: theme.textColor }}
             >
               Texto
