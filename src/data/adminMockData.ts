@@ -1,0 +1,110 @@
+
+import { AdminUser, Plan, ThemeSettings, SystemStats } from '@/types/admin';
+
+export const adminUsers: AdminUser[] = [
+  {
+    id: '1',
+    name: 'Administrador Principal',
+    email: 'admin@foodmarket.com',
+    role: 'superadmin',
+    permissions: {
+      dashboard: true,
+      companies: { view: true, create: true, edit: true, delete: true, approve: true },
+      users: { view: true, edit: true, delete: true, moderate: true },
+      categories: { view: true, create: true, edit: true, delete: true },
+      layout: { view: true, edit: true },
+      plans: { view: true, create: true, edit: true, delete: true },
+      settings: { view: true, edit: true }
+    },
+    avatar: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=100',
+    createdAt: '2024-01-01',
+    lastLogin: '2024-06-03'
+  },
+  {
+    id: '2',
+    name: 'Moderador Geral',
+    email: 'moderador@foodmarket.com',
+    role: 'admin',
+    permissions: {
+      dashboard: true,
+      companies: { view: true, create: false, edit: true, delete: false, approve: true },
+      users: { view: true, edit: true, delete: false, moderate: true },
+      categories: { view: true, create: true, edit: true, delete: false },
+      layout: { view: true, edit: false },
+      plans: { view: true, create: false, edit: false, delete: false },
+      settings: { view: true, edit: false }
+    },
+    avatar: 'https://images.unsplash.com/photo-1494790108755-2616b612b786?w=100',
+    createdAt: '2024-02-15',
+    lastLogin: '2024-06-02'
+  }
+];
+
+export const plans: Plan[] = [
+  {
+    id: '1',
+    name: 'Gratuito',
+    description: 'Ideal para começar',
+    price: 0,
+    features: ['Até 10 produtos', 'Perfil básico', 'Suporte por email'],
+    maxProducts: 10,
+    maxImages: 20,
+    featured: false,
+    priority: 3,
+    analytics: false,
+    support: 'basic',
+    color: '#6b7280',
+    status: 'active'
+  },
+  {
+    id: '2',
+    name: 'Básico',
+    description: 'Para pequenos negócios',
+    price: 29.90,
+    features: ['Até 50 produtos', 'Destaque moderado', 'Analytics básico', 'Suporte prioritário'],
+    maxProducts: 50,
+    maxImages: 100,
+    featured: false,
+    priority: 2,
+    analytics: true,
+    support: 'priority',
+    color: '#3b82f6',
+    status: 'active'
+  },
+  {
+    id: '3',
+    name: 'Premium',
+    description: 'Para empresas em crescimento',
+    price: 79.90,
+    features: ['Produtos ilimitados', 'Destaque máximo', 'Analytics avançado', 'Suporte premium 24/7', 'Campanhas especiais'],
+    maxProducts: -1,
+    maxImages: -1,
+    featured: true,
+    priority: 1,
+    analytics: true,
+    support: 'premium',
+    color: '#8b5cf6',
+    status: 'active'
+  }
+];
+
+export const themeSettings: ThemeSettings = {
+  primaryColor: '#ea580c',
+  secondaryColor: '#dc2626',
+  accentColor: '#f59e0b',
+  backgroundColor: '#ffffff',
+  textColor: '#1f2937',
+  logo: '/placeholder.svg',
+  favicon: '/favicon.ico',
+  headerStyle: 'light',
+  borderRadius: 'medium'
+};
+
+export const systemStats: SystemStats = {
+  totalCompanies: 247,
+  activeCompanies: 198,
+  totalUsers: 1542,
+  totalOrders: 3891,
+  monthlyRevenue: 12750.50,
+  growthRate: 15.4
+};
