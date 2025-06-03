@@ -34,18 +34,17 @@ const AdminSidebar = ({ isOpen, onToggle }: AdminSidebarProps) => {
   return (
     <div className={`
       fixed left-0 top-0 h-full bg-white border-r border-gray-200 transition-all duration-300 z-30
-      ${isOpen ? 'translate-x-0' : '-translate-x-full md:translate-x-0'}
-      ${isOpen ? 'w-64' : 'w-64 md:w-16'}
+      ${isOpen ? 'translate-x-0 w-64' : '-translate-x-full md:translate-x-0 md:w-16'}
     `}>
       <div className="flex items-center justify-between p-4 border-b border-gray-200">
-        {(isOpen || window.innerWidth >= 768) && (
-          <h1 className={`text-xl font-bold text-gray-800 ${!isOpen && 'md:hidden'}`}>
-            Admin Panel
-          </h1>
-        )}
+        <h1 className={`text-xl font-bold text-gray-800 transition-opacity duration-300 ${
+          isOpen ? 'opacity-100' : 'opacity-0 md:opacity-0'
+        }`}>
+          Admin Panel
+        </h1>
         <button
           onClick={onToggle}
-          className="p-2 rounded-lg hover:bg-gray-100 transition-colors"
+          className="p-2 rounded-lg hover:bg-gray-100 transition-colors hidden md:block"
         >
           {isOpen ? <ChevronLeft className="w-5 h-5" /> : <ChevronRight className="w-5 h-5" />}
         </button>
@@ -67,11 +66,11 @@ const AdminSidebar = ({ isOpen, onToggle }: AdminSidebarProps) => {
                 }
               >
                 <item.icon className="w-5 h-5 flex-shrink-0" />
-                {(isOpen || window.innerWidth >= 768) && (
-                  <span className={`ml-3 font-medium ${!isOpen && 'md:hidden'}`}>
-                    {item.label}
-                  </span>
-                )}
+                <span className={`ml-3 font-medium transition-opacity duration-300 ${
+                  isOpen ? 'opacity-100' : 'opacity-0 md:opacity-0'
+                }`}>
+                  {item.label}
+                </span>
               </NavLink>
             </li>
           ))}

@@ -19,7 +19,9 @@ const AdminLayout = () => {
         />
       )}
       
-      <div className="flex-1 flex flex-col min-w-0 w-full">
+      <div className={`flex-1 flex flex-col min-w-0 w-full transition-all duration-300 ${
+        sidebarOpen ? 'md:ml-64' : 'md:ml-16'
+      }`}>
         <AdminHeader onMenuClick={() => setSidebarOpen(!sidebarOpen)} />
         
         <main className="flex-1 p-4 md:p-6 overflow-auto">
