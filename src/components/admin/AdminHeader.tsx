@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { Bell, User, Menu } from 'lucide-react';
 import { Button } from '@/components/ui/button';
@@ -11,12 +12,11 @@ const AdminHeader = ({ onMenuClick }: AdminHeaderProps) => {
     <header className="bg-white border-b border-gray-200 px-4 md:px-6 py-4 relative z-40">
       <div className="flex items-center justify-between">
         <div className="flex items-center space-x-4">
-          {/* Botão menu sempre visível no mobile */}
+          {/* Botão menu para mobile e desktop */}
           <Button
             variant="ghost"
             size="icon"
             onClick={onMenuClick}
-            className="md:hidden"
           >
             <Menu className="w-5 h-5" />
           </Button>
