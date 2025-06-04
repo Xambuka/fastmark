@@ -1,29 +1,25 @@
-
 import React from 'react';
 import { Bell, User, Menu } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 
 interface AdminHeaderProps {
   onMenuClick: () => void;
-  sidebarOpen: boolean;
 }
 
-const AdminHeader = ({ onMenuClick, sidebarOpen }: AdminHeaderProps) => {
+const AdminHeader = ({ onMenuClick }: AdminHeaderProps) => {
   return (
     <header className="bg-white border-b border-gray-200 px-4 md:px-6 py-4 relative z-40">
       <div className="flex items-center justify-between">
         <div className="flex items-center space-x-4">
-          {/* Botão só aparece quando sidebar está fechada */}
-          {!sidebarOpen && (
-            <Button
-              variant="ghost"
-              size="icon"
-              onClick={onMenuClick}
-              className="md:block"
-            >
-              <Menu className="w-5 h-5" />
-            </Button>
-          )}
+          {/* Botão menu sempre visível no mobile */}
+          <Button
+            variant="ghost"
+            size="icon"
+            onClick={onMenuClick}
+            className="md:hidden"
+          >
+            <Menu className="w-5 h-5" />
+          </Button>
           
           <h2 className="text-lg font-semibold text-gray-800">
             Painel Administrativo

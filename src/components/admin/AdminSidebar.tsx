@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 import { 
@@ -11,7 +10,8 @@ import {
   Settings,
   BarChart3,
   ChevronLeft,
-  ChevronRight
+  ChevronRight,
+  X
 } from 'lucide-react';
 
 interface AdminSidebarProps {
@@ -42,6 +42,18 @@ const AdminSidebar = ({ isOpen, onToggle }: AdminSidebarProps) => {
         }`}>
           Admin Panel
         </h1>
+        
+        {/* Botão de fechar para mobile quando sidebar está aberta */}
+        {isOpen && (
+          <button
+            onClick={onToggle}
+            className="p-2 rounded-lg hover:bg-gray-100 transition-colors md:hidden"
+          >
+            <X className="w-5 h-5" />
+          </button>
+        )}
+        
+        {/* Botão toggle para desktop */}
         <button
           onClick={onToggle}
           className="p-2 rounded-lg hover:bg-gray-100 transition-colors hidden md:block"
