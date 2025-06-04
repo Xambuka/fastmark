@@ -1,5 +1,4 @@
-
-import { AdminUser, Plan, ThemeSettings, SystemStats } from '@/types/admin';
+import { AdminUser, Plan, Category, ThemeSettings, SystemStats } from '@/types/admin';
 
 export const adminUsers: AdminUser[] = [
   {
@@ -85,6 +84,59 @@ export const plans: Plan[] = [
     support: 'premium',
     color: '#8b5cf6',
     status: 'active'
+  }
+];
+
+export const categories: Category[] = [
+  { 
+    id: '1', 
+    name: 'Restaurantes', 
+    description: 'Estabelecimentos que servem refeições', 
+    slug: 'restaurantes',
+    status: 'active',
+    count: 54,
+    icon: '🍽️',
+    featured: true
+  },
+  { 
+    id: '2', 
+    name: 'Lanchonetes', 
+    description: 'Fast food e lanches rápidos', 
+    slug: 'lanchonetes',
+    status: 'active',
+    count: 38,
+    icon: '🍔',
+    featured: true 
+  },
+  { 
+    id: '3', 
+    name: 'Cafeterias', 
+    description: 'Café e produtos de padaria', 
+    slug: 'cafeterias',
+    status: 'active',
+    count: 25,
+    icon: '☕',
+    featured: false
+  },
+  { 
+    id: '4', 
+    name: 'Pizzarias', 
+    description: 'Especializado em pizzas', 
+    slug: 'pizzarias',
+    status: 'inactive',
+    count: 17,
+    icon: '🍕',
+    featured: false
+  },
+  { 
+    id: '5', 
+    name: 'Docerias', 
+    description: 'Sobremesas e doces', 
+    slug: 'docerias',
+    status: 'active',
+    count: 12,
+    icon: '🍰',
+    featured: false
   }
 ];
 

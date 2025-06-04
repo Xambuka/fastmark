@@ -63,6 +63,17 @@ export interface Plan {
   status: 'active' | 'inactive';
 }
 
+export interface Category {
+  id: string;
+  name: string;
+  description: string;
+  slug: string;
+  icon: string;
+  status: 'active' | 'inactive';
+  count: number;
+  featured: boolean;
+}
+
 export interface ThemeSettings {
   primaryColor: string;
   secondaryColor: string;
