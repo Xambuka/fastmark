@@ -5,21 +5,26 @@ import { Button } from '@/components/ui/button';
 
 interface AdminHeaderProps {
   onMenuClick: () => void;
+  sidebarOpen: boolean;
 }
 
-const AdminHeader = ({ onMenuClick }: AdminHeaderProps) => {
+const AdminHeader = ({ onMenuClick, sidebarOpen }: AdminHeaderProps) => {
   return (
-    <header className="bg-white border-b border-gray-200 px-4 md:px-6 py-4">
+    <header className="bg-white border-b border-gray-200 px-4 md:px-6 py-4 relative z-40">
       <div className="flex items-center justify-between">
         <div className="flex items-center space-x-4">
-          <Button
-            variant="ghost"
-            size="icon"
-            onClick={onMenuClick}
-            className="md:hidden"
-          >
-            <Menu className="w-5 h-5" />
-          </Button>
+          {/* Botão só aparece quando sidebar está fechada */}
+          {!sidebarOpen && (
+            <Button
+              variant="ghost"
+              size="icon"
+              onClick={onMenuClick}
+              className="md:block"
+            >
+              <Menu className="w-5 h-5" />
+            </Button>
+          )}
+          
           <h2 className="text-lg font-semibold text-gray-800">
             Painel Administrativo
           </h2>
