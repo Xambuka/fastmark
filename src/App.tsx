@@ -10,6 +10,7 @@ import AdminLayout from "./components/admin/AdminLayout";
 import Dashboard from "./pages/admin/Dashboard";
 import Plans from "./pages/admin/Plans";
 import Categories from "./pages/admin/Categories";
+import AdminUsers from "./pages/admin/AdminUsers";
 
 const queryClient = new QueryClient();
 
@@ -27,6 +28,7 @@ const App = () => (
                 <Route index element={<Dashboard />} />
                 <Route path="plans" element={<Plans />} />
                 <Route path="categories" element={<Categories />} />
+                <Route path="users" element={<AdminUsers />} />
               </Route>
             </Routes>
           } />
