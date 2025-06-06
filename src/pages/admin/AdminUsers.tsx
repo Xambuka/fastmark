@@ -48,9 +48,9 @@ const AdminUsers = () => {
 
   if (showCreateForm) {
     return (
-      <div className="space-y-6">
-        <div className="flex items-center justify-between">
-          <h1 className="text-2xl font-bold text-gray-900">Criar Administrador</h1>
+      <div className="space-y-4 md:space-y-6">
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+          <h1 className="text-xl md:text-2xl font-bold text-gray-900">Criar Administrador</h1>
           <Button variant="outline" onClick={() => setShowCreateForm(false)}>
             Voltar
           </Button>
@@ -62,9 +62,9 @@ const AdminUsers = () => {
 
   if (editingUser) {
     return (
-      <div className="space-y-6">
-        <div className="flex items-center justify-between">
-          <h1 className="text-2xl font-bold text-gray-900">Editar Administrador</h1>
+      <div className="space-y-4 md:space-y-6">
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+          <h1 className="text-xl md:text-2xl font-bold text-gray-900">Editar Administrador</h1>
           <Button variant="outline" onClick={() => setEditingUser(null)}>
             Voltar
           </Button>
@@ -80,9 +80,9 @@ const AdminUsers = () => {
 
   if (changingPasswordUser) {
     return (
-      <div className="space-y-6">
-        <div className="flex items-center justify-between">
-          <h1 className="text-2xl font-bold text-gray-900">Alterar Senha</h1>
+      <div className="space-y-4 md:space-y-6">
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+          <h1 className="text-xl md:text-2xl font-bold text-gray-900">Alterar Senha</h1>
           <Button variant="outline" onClick={() => setChangingPasswordUser(null)}>
             Voltar
           </Button>
@@ -96,70 +96,73 @@ const AdminUsers = () => {
   }
 
   return (
-    <div className="space-y-6">
-      <div className="flex items-center justify-between">
-        <h1 className="text-2xl font-bold text-gray-900">Administradores</h1>
-        <Button onClick={() => setShowCreateForm(true)}>
+    <div className="space-y-4 md:space-y-6">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+        <h1 className="text-xl md:text-2xl font-bold text-gray-900">Administradores</h1>
+        <Button onClick={() => setShowCreateForm(true)} className="w-full sm:w-auto">
           <Plus className="w-4 h-4 mr-2" />
           Novo Administrador
         </Button>
       </div>
 
-      <div className="grid gap-6">
+      <div className="grid gap-4 md:gap-6">
         {users.map((user) => (
           <Card key={user.id}>
-            <CardHeader>
-              <div className="flex items-center justify-between">
-                <div className="flex items-center space-x-4">
+            <CardHeader className="pb-3">
+              <div className="flex flex-col space-y-3 sm:flex-row sm:items-center sm:justify-between sm:space-y-0">
+                <div className="flex items-center space-x-3 sm:space-x-4">
                   {user.avatar && (
                     <img 
                       src={user.avatar} 
                       alt={user.name}
-                      className="w-12 h-12 rounded-full"
+                      className="w-10 h-10 sm:w-12 sm:h-12 rounded-full flex-shrink-0"
                     />
                   )}
-                  <div>
-                    <CardTitle className="text-lg">{user.name}</CardTitle>
-                    <p className="text-gray-600">{user.email}</p>
+                  <div className="min-w-0 flex-1">
+                    <CardTitle className="text-base sm:text-lg truncate">{user.name}</CardTitle>
+                    <p className="text-sm text-gray-600 truncate">{user.email}</p>
                   </div>
                 </div>
-                <Badge className={getRoleBadgeColor(user.role)}>
+                <Badge className={`${getRoleBadgeColor(user.role)} flex-shrink-0 self-start sm:self-center`}>
                   {user.role === 'superadmin' ? 'Super Admin' : 
                    user.role === 'admin' ? 'Admin' : 'Moderador'}
                 </Badge>
               </div>
             </CardHeader>
-            <CardContent>
-              <div className="flex items-center justify-between">
+            <CardContent className="pt-0">
+              <div className="flex flex-col space-y-3 sm:flex-row sm:items-center sm:justify-between sm:space-y-0">
                 <div className="text-sm text-gray-600">
                   <p>Criado em: {user.createdAt}</p>
                   {user.lastLogin && <p>Último login: {user.lastLogin}</p>}
                 </div>
-                <div className="flex space-x-2">
+                <div className="flex flex-wrap gap-2">
                   <Button
                     size="sm"
                     variant="outline"
                     onClick={() => setChangingPasswordUser(user)}
+                    className="flex-1 sm:flex-none"
                   >
                     <Shield className="w-4 h-4 mr-1" />
-                    Senha
+                    <span className="hidden xs:inline">Senha</span>
                   </Button>
                   <Button
                     size="sm"
                     variant="outline"
                     onClick={() => setEditingUser(user)}
+                    className="flex-1 sm:flex-none"
                   >
                     <Edit className="w-4 h-4 mr-1" />
-                    Editar
+                    <span className="hidden xs:inline">Editar</span>
                   </Button>
                   {user.role !== 'superadmin' && (
                     <Button
                       size="sm"
                       variant="destructive"
                       onClick={() => handleDeleteUser(user.id)}
+                      className="flex-1 sm:flex-none"
                     >
                       <Trash2 className="w-4 h-4 mr-1" />
-                      Excluir
+                      <span className="hidden xs:inline">Excluir</span>
                     </Button>
                   )}
                 </div>
