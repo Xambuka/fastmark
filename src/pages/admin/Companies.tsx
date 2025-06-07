@@ -116,12 +116,12 @@ const Companies = () => {
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <h1 className="text-xl md:text-2xl font-bold text-gray-900">Empresas</h1>
         <div className="flex flex-col sm:flex-row gap-2 sm:gap-4">
-          <div className="flex gap-2 overflow-x-auto">
+          <div className="grid grid-cols-2 gap-2 sm:flex sm:gap-2">
             <Button
               variant={filter === 'all' ? 'default' : 'outline'}
               size="sm"
               onClick={() => setFilter('all')}
-              className="whitespace-nowrap"
+              className="text-xs sm:text-sm"
             >
               Todas ({companies.length})
             </Button>
@@ -129,7 +129,7 @@ const Companies = () => {
               variant={filter === 'pending' ? 'default' : 'outline'}
               size="sm"
               onClick={() => setFilter('pending')}
-              className="whitespace-nowrap"
+              className="text-xs sm:text-sm"
             >
               Pendentes ({companies.filter(c => c.status === 'pending').length})
             </Button>
@@ -137,7 +137,7 @@ const Companies = () => {
               variant={filter === 'approved' ? 'default' : 'outline'}
               size="sm"
               onClick={() => setFilter('approved')}
-              className="whitespace-nowrap"
+              className="text-xs sm:text-sm"
             >
               Aprovadas ({companies.filter(c => c.status === 'approved').length})
             </Button>
@@ -145,7 +145,7 @@ const Companies = () => {
               variant={filter === 'rejected' ? 'default' : 'outline'}
               size="sm"
               onClick={() => setFilter('rejected')}
-              className="whitespace-nowrap"
+              className="text-xs sm:text-sm"
             >
               Rejeitadas ({companies.filter(c => c.status === 'rejected').length})
             </Button>
