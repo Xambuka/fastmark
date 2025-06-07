@@ -42,12 +42,12 @@ const Plans = () => {
       </div>
 
       {/* Filter Buttons */}
-      <div className="flex gap-2 overflow-x-auto">
+      <div className="grid grid-cols-3 gap-2 sm:flex sm:gap-2 sm:overflow-x-auto">
         <Button
           variant={filter === 'all' ? 'default' : 'outline'}
           size="sm"
           onClick={() => setFilter('all')}
-          className="whitespace-nowrap"
+          className="text-xs sm:text-sm whitespace-nowrap"
         >
           Todos ({planList.length})
         </Button>
@@ -55,7 +55,7 @@ const Plans = () => {
           variant={filter === 'company' ? 'default' : 'outline'}
           size="sm"
           onClick={() => setFilter('company')}
-          className="whitespace-nowrap"
+          className="text-xs sm:text-sm whitespace-nowrap"
         >
           Empresas ({planList.filter(p => p.type === 'company').length})
         </Button>
@@ -63,7 +63,7 @@ const Plans = () => {
           variant={filter === 'advertiser' ? 'default' : 'outline'}
           size="sm"
           onClick={() => setFilter('advertiser')}
-          className="whitespace-nowrap"
+          className="text-xs sm:text-sm whitespace-nowrap"
         >
           Anunciantes ({planList.filter(p => p.type === 'advertiser').length})
         </Button>

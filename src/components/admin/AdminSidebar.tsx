@@ -47,8 +47,8 @@ const AdminSidebar = ({ isOpen, onToggle }: AdminSidebarProps) => {
         {/* Botão de fechar para mobile quando sidebar está aberta */}
         <button
           onClick={onToggle}
-          className={`p-2 rounded-lg hover:bg-gray-100 transition-colors ${
-            isOpen ? 'md:hidden' : 'hidden'
+          className={`p-2 rounded-lg hover:bg-gray-100 transition-colors md:hidden ${
+            isOpen ? 'block' : 'hidden'
           }`}
         >
           <X className="w-5 h-5" />
