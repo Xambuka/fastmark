@@ -1,3 +1,4 @@
+
 import { AdminUser, Plan, Category, ThemeSettings, SystemStats } from '@/types/admin';
 
 export const adminUsers: AdminUser[] = [
@@ -40,6 +41,7 @@ export const adminUsers: AdminUser[] = [
 ];
 
 export const plans: Plan[] = [
+  // Planos para Empresas
   {
     id: '1',
     name: 'Gratuito',
@@ -53,7 +55,8 @@ export const plans: Plan[] = [
     analytics: false,
     support: 'basic',
     color: '#6b7280',
-    status: 'active'
+    status: 'active',
+    type: 'company'
   },
   {
     id: '2',
@@ -68,7 +71,8 @@ export const plans: Plan[] = [
     analytics: true,
     support: 'priority',
     color: '#3b82f6',
-    status: 'active'
+    status: 'active',
+    type: 'company'
   },
   {
     id: '3',
@@ -83,7 +87,57 @@ export const plans: Plan[] = [
     analytics: true,
     support: 'premium',
     color: '#8b5cf6',
-    status: 'active'
+    status: 'active',
+    type: 'company'
+  },
+  // Planos para Anunciantes
+  {
+    id: '4',
+    name: 'Anúncio Básico',
+    description: 'Para divulgação simples',
+    price: 19.90,
+    features: ['Até 5 anúncios/mês', '1.000 impressões', 'Posicionamento padrão', 'Relatórios básicos'],
+    maxAds: 5,
+    maxImpressions: 1000,
+    featured: false,
+    priority: 3,
+    analytics: true,
+    support: 'basic',
+    color: '#10b981',
+    status: 'active',
+    type: 'advertiser'
+  },
+  {
+    id: '5',
+    name: 'Anúncio Premium',
+    description: 'Para máxima visibilidade',
+    price: 49.90,
+    features: ['Até 15 anúncios/mês', '5.000 impressões', 'Posicionamento prioritário', 'Analytics detalhado', 'Segmentação avançada'],
+    maxAds: 15,
+    maxImpressions: 5000,
+    featured: true,
+    priority: 2,
+    analytics: true,
+    support: 'priority',
+    color: '#f59e0b',
+    status: 'active',
+    type: 'advertiser'
+  },
+  {
+    id: '6',
+    name: 'Anúncio Empresarial',
+    description: 'Para grandes campanhas',
+    price: 99.90,
+    features: ['Anúncios ilimitados', 'Impressões ilimitadas', 'Posicionamento premium', 'Suporte dedicado', 'Campanhas personalizadas'],
+    maxAds: -1,
+    maxImpressions: -1,
+    featured: false,
+    priority: 1,
+    analytics: true,
+    support: 'premium',
+    color: '#ef4444',
+    status: 'active',
+    type: 'advertiser'
   }
 ];
 

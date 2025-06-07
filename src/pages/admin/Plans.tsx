@@ -9,6 +9,7 @@ import { Plan } from '@/types/admin';
 
 const Plans = () => {
   const [planList, setPlanList] = useState<Plan[]>(plans);
+  const [filter, setFilter] = useState<'all' | 'company' | 'advertiser'>('all');
 
   const getPlanStatusColor = (status: string) => {
     return status === 'active' ? 'bg-green-100 text-green-800' : 'bg-red-100 text-red-800';
@@ -18,13 +19,21 @@ const Plans = () => {
     return price === 0 ? 'Gratuito' : `R$ ${price.toFixed(2)}/mês`;
   };
 
+  const getTypeText = (type: string) => {
+    return type === 'company' ? 'Empresa' : 'Anunciante';
+  };
+
+  const filteredPlans = filter === 'all' 
+    ? planList 
+    : planList.filter(plan => plan.type === filter);
+
   return (
     <div className="space-y-6">
       {/* Header */}
-      <div className="flex items-center justify-between">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <div>
           <h1 className="text-2xl font-bold text-gray-900">Gestão de Planos</h1>
-          <p className="text-gray-600">Gerencie os planos de assinatura das empresas</p>
+          <p className="text-gray-600">Gerencie os planos de assinatura para empresas e anunciantes</p>
         </div>
         <Button className="flex items-center space-x-2">
           <Plus className="w-4 h-4" />
@@ -32,9 +41,37 @@ const Plans = () => {
         </Button>
       </div>
 
+      {/* Filter Buttons */}
+      <div className="flex gap-2 overflow-x-auto">
+        <Button
+          variant={filter === 'all' ? 'default' : 'outline'}
+          size="sm"
+          onClick={() => setFilter('all')}
+          className="whitespace-nowrap"
+        >
+          Todos ({planList.length})
+        </Button>
+        <Button
+          variant={filter === 'company' ? 'default' : 'outline'}
+          size="sm"
+          onClick={() => setFilter('company')}
+          className="whitespace-nowrap"
+        >
+          Empresas ({planList.filter(p => p.type === 'company').length})
+        </Button>
+        <Button
+          variant={filter === 'advertiser' ? 'default' : 'outline'}
+          size="sm"
+          onClick={() => setFilter('advertiser')}
+          className="whitespace-nowrap"
+        >
+          Anunciantes ({planList.filter(p => p.type === 'advertiser').length})
+        </Button>
+      </div>
+
       {/* Plans Grid */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        {planList.map((plan) => (
+        {filteredPlans.map((plan) => (
           <Card key={plan.id} className="relative hover:shadow-lg transition-shadow">
             {plan.featured && (
               <div className="absolute -top-3 left-1/2 transform -translate-x-1/2">
@@ -50,6 +87,11 @@ const Plans = () => {
                 style={{ backgroundColor: plan.color }}
               >
                 {plan.name[0]}
+              </div>
+              <div className="flex items-center justify-center gap-2 mb-2">
+                <Badge variant="outline" className="text-xs">
+                  {getTypeText(plan.type)}
+                </Badge>
               </div>
               <CardTitle className="text-xl">{plan.name}</CardTitle>
               <p className="text-gray-600">{plan.description}</p>
@@ -85,16 +127,35 @@ const Plans = () => {
                 </div>
 
                 <div className="grid grid-cols-2 gap-4 pt-4 border-t">
-                  <div className="text-center">
-                    <p className="text-sm text-gray-600">Produtos</p>
-                    <p className="font-medium">
-                      {plan.maxProducts === -1 ? 'Ilimitado' : plan.maxProducts}
-                    </p>
-                  </div>
-                  <div className="text-center">
-                    <p className="text-sm text-gray-600">Prioridade</p>
-                    <p className="font-medium">{plan.priority}</p>
-                  </div>
+                  {plan.type === 'company' ? (
+                    <>
+                      <div className="text-center">
+                        <p className="text-sm text-gray-600">Produtos</p>
+                        <p className="font-medium">
+                          {plan.maxProducts === -1 ? 'Ilimitado' : plan.maxProducts}
+                        </p>
+                      </div>
+                      <div className="text-center">
+                        <p className="text-sm text-gray-600">Prioridade</p>
+                        <p className="font-medium">{plan.priority}</p>
+                      </div>
+                    </>
+                  ) : (
+                    <>
+                      <div className="text-center">
+                        <p className="text-sm text-gray-600">Anúncios</p>
+                        <p className="font-medium">
+                          {plan.maxAds === -1 ? 'Ilimitado' : plan.maxAds}
+                        </p>
+                      </div>
+                      <div className="text-center">
+                        <p className="text-sm text-gray-600">Impressões</p>
+                        <p className="font-medium">
+                          {plan.maxImpressions === -1 ? 'Ilimitadas' : plan.maxImpressions?.toLocaleString()}
+                        </p>
+                      </div>
+                    </>
+                  )}
                 </div>
 
                 <div className="flex space-x-2 pt-4">

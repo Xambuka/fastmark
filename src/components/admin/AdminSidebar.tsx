@@ -26,8 +26,8 @@ const AdminSidebar = ({ isOpen, onToggle }: AdminSidebarProps) => {
     { icon: Building2, label: 'Empresas', path: '/admin/companies' },
     { icon: Users, label: 'Usuários', path: '/admin/users' },
     { icon: Grid3X3, label: 'Categorias', path: '/admin/categories' },
-    { icon: Palette, label: 'Layout', path: '/admin/layout' },
     { icon: CreditCard, label: 'Planos', path: '/admin/plans' },
+    { icon: Palette, label: 'Layout', path: '/admin/layout' },
     { icon: BarChart3, label: 'Relatórios', path: '/admin/reports' },
     { icon: Settings, label: 'Configurações', path: '/admin/settings' },
   ];

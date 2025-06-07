@@ -53,14 +53,17 @@ export interface Plan {
   description: string;
   price: number;
   features: string[];
-  maxProducts: number;
-  maxImages: number;
+  maxProducts?: number;
+  maxImages?: number;
+  maxAds?: number;
+  maxImpressions?: number;
   featured: boolean;
   priority: number;
   analytics: boolean;
   support: 'basic' | 'priority' | 'premium';
   color: string;
   status: 'active' | 'inactive';
+  type: 'company' | 'advertiser';
 }
 
 export interface Category {
