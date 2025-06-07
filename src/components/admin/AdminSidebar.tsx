@@ -54,13 +54,15 @@ const AdminSidebar = ({ isOpen, onToggle }: AdminSidebarProps) => {
           <X className="w-5 h-5" />
         </button>
         
-        {/* Botão toggle para desktop - só aparece em desktop */}
-        <button
-          onClick={onToggle}
-          className="p-2 rounded-lg hover:bg-gray-100 transition-colors hidden md:block"
-        >
-          {isOpen ? <ChevronLeft className="w-5 h-5" /> : <ChevronRight className="w-5 h-5" />}
-        </button>
+        {/* Botão toggle para desktop - só aparece em desktop e quando sidebar está aberta */}
+        {isOpen && (
+          <button
+            onClick={onToggle}
+            className="p-2 rounded-lg hover:bg-gray-100 transition-colors hidden md:block"
+          >
+            <ChevronLeft className="w-5 h-5" />
+          </button>
+        )}
       </div>
 
       <nav className="mt-6">
